@@ -1,0 +1,52 @@
+captcha:
+  key-long: 6
+  img-width: 240
+  img-height: 80
+casbin:
+  model-path: ./resource/rbac_model.conf
+jwt:
+  buffer-time: 86400
+  expires-time: 604800
+  signing-key: 9abe3de9-ef2c-4393-a549-32cd60daa31b
+local:
+  path: uploads/file
+mysql:
+  path: 192.168.100.168:3306
+  config: charset=utf8mb4&parseTime=True&loc=Local
+  db-name: devops
+  username: root
+  password: "123456"
+  max-idle-conns: 0
+  max-open-conns: 0
+  log-mode: ""
+  log-zap: false
+redis:
+  db: 0
+  addr: 192.168.100.51:30911
+  password: BdilqD#sANb^6iVD
+system:
+  env: public
+  addr: 8888
+  db-type: mysql
+  oss-type: local
+  use-multipoint: true
+timer:
+  start: true
+  spec: '@daily'
+  detail:
+  - tableName: sys_operation_records
+    compareField: created_at
+    interval: 2160h
+  - tableName: jwt_blacklists
+    compareField: created_at
+    interval: 168h
+zap:
+  level: info
+  format: console
+  prefix: '[devops-api]'
+  director: log
+  link-name: latest_log
+  showLine: false
+  encode-level: LowercaseColorLevelEncoder
+  stacktrace-key: stacktrace
+  log-in-console: true

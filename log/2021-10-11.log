@@ -1,0 +1,98 @@
+[devops-api]2021/10/11 - 16:28:32.951	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 16:28:32.951	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 16:28:32.951	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 16:28:32.952	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 16:28:32.952	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 16:35:12.642	[31merror[0m	参数校验不通过!	{"err": "invalid character '\"' after object key:value pair"}
+[devops-api]2021/10/11 - 16:37:14.694	[31merror[0m	accept tcp [::]:8888: use of closed network connection
+[devops-api]2021/10/11 - 16:37:18.979	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 16:37:18.980	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 16:37:18.980	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 16:37:18.981	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 16:37:18.981	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 16:37:42.452	[31merror[0m	参数校验不通过!	{"err": "invalid character '\"' after object key:value pair"}
+[devops-api]2021/10/11 - 16:37:50.009	[31merror[0m	accept tcp [::]:8888: use of closed network connection
+[devops-api]2021/10/11 - 16:38:12.679	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 16:38:12.680	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 16:38:12.680	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 16:38:12.680	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 16:38:12.681	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 16:43:14.537	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 16:43:14.538	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 16:43:14.538	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 16:43:14.539	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 16:43:14.539	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 16:43:53.362	[34minfo[0m	register table success
+[devops-api]2021/10/11 - 16:43:53.367	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 16:43:53.370	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 16:43:53.370	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 16:43:53.371	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 16:43:53.371	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 16:44:16.922	[31merror[0m	已存在数据库配置!
+[devops-api]2021/10/11 - 16:44:53.453	[34minfo[0m	register table success
+[devops-api]2021/10/11 - 16:44:53.457	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 16:44:53.460	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 16:44:53.460	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 16:44:53.460	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 16:44:53.461	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 16:44:56.375	[31merror[0m	参数校验不通过!	{"err": "invalid character '\"' after object key:value pair"}
+[devops-api]2021/10/11 - 16:45:11.299	[31merror[0m	参数校验不通过!	{"err": "invalid character '\"' after object key:value pair"}
+[devops-api]2021/10/11 - 16:46:09.830	[34minfo[0m	register table success
+[devops-api]2021/10/11 - 16:46:09.834	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 16:46:09.837	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 16:46:09.837	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 16:46:09.838	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 16:46:09.838	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 16:46:32.230	[31merror[0m	参数校验不通过!	{"err": "invalid character '\"' after object key:value pair"}
+[devops-api]2021/10/11 - 16:47:31.108	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 16:47:31.108	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 16:47:31.109	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 16:47:31.109	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 16:47:31.109	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 16:59:37.749	[34minfo[0m	register table success
+[devops-api]2021/10/11 - 16:59:37.755	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 16:59:37.758	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 16:59:37.758	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 16:59:37.759	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 16:59:37.759	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 17:00:17.543	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 17:00:17.544	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 17:00:17.544	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 17:00:17.544	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 17:00:17.544	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 17:05:06.672	[34minfo[0m	register table success
+[devops-api]2021/10/11 - 17:05:06.676	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 17:05:06.679	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 17:05:06.679	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 17:05:06.680	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 17:05:06.680	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 17:09:48.646	[31merror[0m	accept tcp [::]:8888: use of closed network connection
+[devops-api]2021/10/11 - 17:09:52.987	[34minfo[0m	register table success
+[devops-api]2021/10/11 - 17:09:52.991	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 17:09:52.995	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 17:09:52.995	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 17:09:52.995	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 17:09:52.995	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 18:55:11.027	[31merror[0m	accept tcp [::]:8888: use of closed network connection
+[devops-api]2021/10/11 - 18:55:15.736	[34minfo[0m	register table success
+[devops-api]2021/10/11 - 18:55:15.740	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 18:55:15.743	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 18:55:15.743	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 18:55:15.744	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 18:55:15.744	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 18:57:00.048	[31merror[0m	accept tcp [::]:8888: use of closed network connection
+[devops-api]2021/10/11 - 18:57:04.362	[34minfo[0m	register table success
+[devops-api]2021/10/11 - 18:57:04.366	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 18:57:04.369	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 18:57:04.369	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 18:57:04.369	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 18:57:04.369	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 19:00:18.519	[31merror[0m	accept tcp [::]:8888: use of closed network connection
+[devops-api]2021/10/11 - 19:00:22.291	[34minfo[0m	register table success
+[devops-api]2021/10/11 - 19:00:22.294	[34minfo[0m	redis connect ping response:	{"pong": "PONG"}
+[devops-api]2021/10/11 - 19:00:22.297	[34minfo[0m	use middleware logger
+[devops-api]2021/10/11 - 19:00:22.298	[34minfo[0m	register swagger handler
+[devops-api]2021/10/11 - 19:00:22.298	[34minfo[0m	router register success
+[devops-api]2021/10/11 - 19:00:22.298	[34minfo[0m	server run success on 	{"address": ":8888"}
+[devops-api]2021/10/11 - 20:26:05.402	[34minfo[0m	数据库无需初始化
+[devops-api]2021/10/11 - 20:30:37.488	[31merror[0m	accept tcp [::]:8888: use of closed network connection
