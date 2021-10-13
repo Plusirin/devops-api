@@ -129,6 +129,8 @@ func (initDBService *InitDBService) InitDB(conf request.InitDB) error {
 		system.SysBaseMenuParameter{},
 		system.JwtBlacklist{},
 		system.SysOperationRecord{},
+		system.SysProject{},
+		system.SysTool{},
 	)
 	if err != nil {
 		global.GVA_DB = nil

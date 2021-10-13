@@ -13,6 +13,7 @@ type ApiGroup struct {
 	OperationRecordApi
 	AuthorityMenuApi
 	ProjectApi
+	ToolApi
 }
 
 var authorityService = service.ServiceGroupApp.SystemServiceGroup.AuthorityService
@@ -26,3 +27,4 @@ var operationRecordService = service.ServiceGroupApp.SystemServiceGroup.Operatio
 var userService = service.ServiceGroupApp.SystemServiceGroup.UserService
 var systemConfigService = service.ServiceGroupApp.SystemServiceGroup.SystemConfigService
 var projectService = service.ServiceGroupApp.SystemServiceGroup.ProjectService
+var toolService = service.ServiceGroupApp.SystemServiceGroup.ToolService

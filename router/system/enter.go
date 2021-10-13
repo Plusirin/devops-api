@@ -12,4 +12,5 @@ type RouterGroup struct {
 	SysRouter
 	UserRouter
 	ProjectRouter
+	ToolRouter
 }

@@ -12,4 +12,5 @@ type ServiceGroup struct {
 	SystemConfigService
 	UserService
 	ProjectService
+	ToolService
 }
