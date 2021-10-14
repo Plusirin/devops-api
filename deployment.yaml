@@ -1,0 +1,124 @@
+#---
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  namespace: devops
+#  name: config-mysql
+#data:
+#  MysqlHost: "10.0.101.165"
+#  MysqlPort: "3307"
+#  MysqlDb: "jm"
+---
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  namespace: devops
+#  name: secret-mysql
+#type: kubernetes.io/basic-auth
+#data:
+#  username: am0=
+#  password: N2M3YXZ0ZUk0ZWhpQyN1Jg==
+#---
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  namespace: devops
+#  name: config-sftp
+#data:
+#  SftpIp: "192.30.220.116"
+#  SftpPort: "22"
+#---
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  namespace: devops
+#  name: secret-sftp
+#type: kubernetes.io/basic-auth
+#data:
+#  username: bWFwX2Zvb3RwcmludA==
+#  password: bUBwX2Zvb3RwcmludA==
+#---
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  namespace: devops
+#  name: pvc-devops-api
+#spec:
+#  accessModes:
+#    - ReadWriteMany
+#  resources:
+#    requests:
+#      storage: 10Gi
+#  storageClassName: efs-jethro-pro
+#  volumeMode: Filesystem
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: devops-api
+    env: dev
+  name: devops-api
+  namespace: devops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-api
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: devops-api
+        env: dev
+      name: devops-api
+    spec:
+      containers:
+        - image: 'harbor.xwsoftlan.com/devops/devops-api:latest'
+          imagePullPolicy: Always
+          name: devops-api
+          ports:
+            - containerPort: 8888
+              protocol: TCP
+          resources:
+            limits:
+              cpu: '1'
+              memory: 2Gi
+            requests:
+              cpu: 500m
+              memory: 1Gi
+          volumeMounts:
+            - mountPath: /etc/localtime
+              name: localtime
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - hostPath:
+            path: /usr/share/zoneinfo/Asia/Shanghai
+            type: ''
+          name: localtime
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: devops-api
+    env: dev
+  name: devops-api
+  namespace: devops
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+    - name: http
+      nodePort: 32288
+      port: 8888
+      protocol: TCP
+      targetPort: 8888
+  selector:
+    app: devops-api
+    env: dev
+  sessionAffinity: None
+  type: NodePort

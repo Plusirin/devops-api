@@ -1630,6 +1630,171 @@ var doc = `{
                 }
             }
         },
+        "/tool/changeToolName": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SysTool"
+                ],
+                "summary": "修改项目名",
+                "parameters": [
+                    {
+                        "description": "用户名, 原密码, 新密码",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.ChangeToolName"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"success\":true,\"data\":{},\"msg\":\"修改成功\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/tool/createTool": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SysTool"
+                ],
+                "summary": "创建项目",
+                "parameters": [
+                    {
+                        "description": "项目名称, 别名, 描述",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.CreateTool"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"success\":true,\"data\":{},\"msg\":\"项目创建成功\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/tool/deleteTool": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SysTool"
+                ],
+                "summary": "删除项目",
+                "parameters": [
+                    {
+                        "description": "项目ID",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.GetById"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"success\":true,\"data\":{},\"msg\":\"删除成功\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/tool/getJobLastNum": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SysTool"
+                ],
+                "summary": "修改项目名",
+                "parameters": [
+                    {
+                        "description": "id, jobName",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.GetJobLastNum"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"success\":true,\"data\":{},\"msg\":\"获取成功\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/tool/getToolInfo": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SysTool"
+                ],
+                "summary": "获取项目信息",
+                "parameters": [
+                    {
+                        "description": "项目ID",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.GetById"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"success\":true,\"data\":{},\"msg\":\"获取成功\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/user/changePassword": {
             "post": {
                 "security": [
@@ -2231,6 +2396,17 @@ var doc = `{
                 }
             }
         },
+        "request.ChangeToolName": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "newToolName": {
+                    "type": "string"
+                }
+            }
+        },
         "request.CreateProject": {
             "type": "object",
             "properties": {
@@ -2241,6 +2417,26 @@ var doc = `{
                     "type": "string"
                 },
                 "projectName": {
+                    "type": "string"
+                }
+            }
+        },
+        "request.CreateTool": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                },
+                "toolName": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "userName": {
                     "type": "string"
                 }
             }
@@ -2263,6 +2459,17 @@ var doc = `{
                 "id": {
                     "description": "主键ID",
                     "type": "number"
+                }
+            }
+        },
+        "request.GetJobLastNum": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "jobName": {
+                    "type": "string"
                 }
             }
         },

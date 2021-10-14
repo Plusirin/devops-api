@@ -87,3 +87,12 @@ dist
 .note.md
 
 # config files, may contain sensitive information
+
+#log
+log/
+latest_log
+
+docs/
+
+# binary
+devops-api
