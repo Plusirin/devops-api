@@ -21,11 +21,11 @@ type ToolApi struct {
 }
 
 // @Tags SysTool
-// @Summary 创建项目
+// @Summary 创建工具
 // @accept application/json
 // @Produce  application/json
-// @Param data body systemReq.CreateTool true "项目名称, 别名, 描述"
-// @Success 200 {string} string "{"success":true,"data":{},"msg":"项目创建成功"}"
+// @Param data body systemReq.CreateTool true "工具名称, 别名, 描述"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"工具创建成功"}"
 // @Router /tool/createTool [post]
 func (b *ToolApi) CreateTool(c *gin.Context) {
 	var p systemReq.CreateTool
@@ -51,10 +51,10 @@ func (b *ToolApi) CreateTool(c *gin.Context) {
 }
 
 // @Tags SysTool
-// @Summary 获取项目信息
+// @Summary 获取工具信息
 // @accept application/json
 // @Produce application/json
-// @Param data body request.GetById true "项目ID"
+// @Param data body request.GetById true "工具ID"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
 // @Router /tool/getToolInfo [post]
 func (b *ToolApi) GetToolInfo(c *gin.Context) {
@@ -73,10 +73,10 @@ func (b *ToolApi) GetToolInfo(c *gin.Context) {
 }
 
 // @Tags SysTool
-// @Summary 删除项目
+// @Summary 删除工具
 // @accept application/json
 // @Produce application/json
-// @Param data body request.GetById true "项目ID"
+// @Param data body request.GetById true "工具ID"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"删除成功"}"
 // @Router /tool/deleteTool [delete]
 func (b *ToolApi) DeleteTool(c *gin.Context) {
@@ -96,7 +96,7 @@ func (b *ToolApi) DeleteTool(c *gin.Context) {
 }
 
 // @Tags SysTool
-// @Summary 修改项目名
+// @Summary 修改工具名
 // @accept application/json
 // @Produce  application/json
 // @Param data body systemReq.ChangeToolName true "用户名, 原密码, 新密码"
@@ -119,7 +119,7 @@ func (b *ToolApi) ChangeToolName(c *gin.Context) {
 }
 
 // @Tags SysTool
-// @Summary 修改项目名
+// @Summary 获取任务最后编号
 // @accept application/json
 // @Produce  application/json
 // @Param data body systemReq.GetJobLastNum true "id, jobName"
@@ -147,10 +147,7 @@ func (b *ToolApi) GetJobLastNum(c *gin.Context) {
 	if errRq != nil {
 		global.GVA_LOG.Error("Jenkins Show Last Number Fail!", zap.Any("err", err))
 	}
-	// 指定用户名、密码进行校验（使用结构体中参数进行拼接）
-	//req.PostForm.Set("username",ReqTool.Username)
-	//req.PostForm.Add("password",ReqTool.Token)
-	//req.SetBasicAuth(ReqTool.Username, ReqTool.Token)
+
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	resp, errDo := client.Do(req)
 	if errDo == nil {
@@ -166,5 +163,99 @@ func (b *ToolApi) GetJobLastNum(c *gin.Context) {
 		response.OkWithDetailed(gin.H{"toolInfo": string(body)}, "获取成功", c)
 	} else {
 		global.GVA_LOG.Error("Jenkins Show Last Number Fail", zap.Any("err", err))
+	}
+}
+
+// @Tags SysTool
+// @Summary 获取任务最后状态
+// @accept application/json
+// @Produce  application/json
+// @Param data body systemReq.GetJobLastNum true "id, jobName"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router /tool/getJobLastState [post]
+func (b *ToolApi) GetJobLastState(c *gin.Context) {
+	var job systemReq.GetJobLastNum
+	_ = c.ShouldBindJSON(&job)
+	if err := utils.Verify(job, utils.GetJobLastNumVerify); err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err, ReqTool := toolService.GetJobLastNum(job.ID)
+	if err != nil {
+		global.GVA_LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	}
+
+	// 定义指定任务url（使用结构体中参数进行拼接）
+	JenkinsJobUrl := ReqTool.URL + "/job/" + job.JobName + "/lastBuild/api/json"
+	client := &http.Client{Timeout: 5 * time.Second}
+	// 使用newrequest准备http调用命令（）
+	loginPara := fmt.Sprintf("username=%s&password=%s", ReqTool.Username, ReqTool.Token)
+	req, errRq := http.NewRequest("GET", JenkinsJobUrl, strings.NewReader(loginPara))
+	if errRq != nil {
+		global.GVA_LOG.Error("Jenkins Show Last State Fail!", zap.Any("err", err))
+	}
+
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	resp, errDo := client.Do(req)
+	if errDo == nil {
+		defer resp.Body.Close()
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			global.GVA_LOG.Error("Jenkins Show Last State Fail")
+			response.FailWithMessage("获取失败", c)
+		}
+		global.GVA_LOG.Info("Jenkins Show Last State")
+		// 返回查询结果正文，正文内容为执行编号（字符串格式）
+		global.GVA_LOG.Info("Jenkins Show Last State  Finish")
+		response.OkWithDetailed(gin.H{"toolInfo": string(body)}, "获取成功", c)
+	} else {
+		global.GVA_LOG.Error("Jenkins Show Last State Fail", zap.Any("err", err))
+	}
+}
+
+// @Tags SysTool
+// @Summary 更具buildnum获取console
+// @accept application/json
+// @Produce  application/json
+// @Param data body systemReq.GetJobLastNum true "id, jobName"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router /tool/getJobConsoleWithNum [post]
+func (b *ToolApi) GetJobConsoleWithNum(c *gin.Context) {
+	var job systemReq.GetJobConsole
+	_ = c.ShouldBindJSON(&job)
+	if err := utils.Verify(job, utils.GetJobLastNumVerify); err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err, ReqTool := toolService.GetJobLastNum(job.ID)
+	if err != nil {
+		global.GVA_LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	}
+
+	// 定义指定任务url（使用结构体中参数进行拼接）
+	JenkinsJobUrl := ReqTool.URL + "/job/" + job.JobName + "/" + job.JobID + "/logText/progressiveText"
+	client := &http.Client{Timeout: 5 * time.Second}
+	// 使用newrequest准备http调用命令（）
+	loginPara := fmt.Sprintf("username=%s&password=%s", ReqTool.Username, ReqTool.Token)
+	req, errRq := http.NewRequest("GET", JenkinsJobUrl, strings.NewReader(loginPara))
+	if errRq != nil {
+		global.GVA_LOG.Error("Jenkins Show Console Fail!", zap.Any("err", err))
+	}
+
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	resp, errDo := client.Do(req)
+	if errDo == nil {
+		defer resp.Body.Close()
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			global.GVA_LOG.Error("Jenkins Show Console Fail")
+			response.FailWithMessage("获取失败", c)
+		}
+		global.GVA_LOG.Info("Jenkins Show Console Finish")
+		response.OkWithDetailed(gin.H{"toolInfo": string(body)}, "获取成功", c)
+	} else {
+		global.GVA_LOG.Error("Jenkins Show Console Fail", zap.Any("err", err))
 	}
 }

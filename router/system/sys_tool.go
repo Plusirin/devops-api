@@ -18,6 +18,8 @@ func (s *ToolRouter) InitToolRouter(Router *gin.RouterGroup) {
 		toolRouter.POST("changeToolName", toolApi.ChangeToolName)
 		toolRouter.POST("getToolInfo", toolApi.GetToolInfo)
 		toolRouter.POST("getJobLastNum", toolApi.GetJobLastNum)
+		toolRouter.POST("getJobLastState", toolApi.GetJobLastState)
+		toolRouter.POST("getJobConsoleWithNum", toolApi.GetJobConsoleWithNum)
 		toolRouter.DELETE("deleteTool", toolApi.DeleteTool)
 	}
 	{

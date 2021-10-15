@@ -142,3 +142,15 @@ func (toolService *ToolService) GetJobLastNum(id uint) (err error, tool system.S
 	err = global.GVA_DB.First(&reqTool, "id = ?", id).Error
 	return err, reqTool
 }
+
+//@author: [yunwei](yunwei@xwsoft.com.cn)
+//@function: GetJobLastState
+//@description: 获取job最新的State
+//@param: id float64
+//@return: err error, tool system.SysTool
+
+func (toolService *ToolService) GetJobLastState(id uint) (err error, tool system.SysTool) {
+	var reqTool system.SysTool
+	err = global.GVA_DB.First(&reqTool, "id = ?", id).Error
+	return err, reqTool
+}

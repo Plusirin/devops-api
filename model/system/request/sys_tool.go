@@ -44,3 +44,10 @@ type GetJobLastNum struct {
 	ID      uint   `json:"id"`
 	JobName string `json:"jobName"`
 }
+
+// Get job Console structure
+type GetJobConsole struct {
+	ID      uint   `json:"id"`
+	JobName string `json:"jobName"`
+	JobID   string `json:"jobID"`
+}
